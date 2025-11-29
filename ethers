@@ -1,0 +1,12 @@
+import { ethers } from "ethers";
+
+const contractAddress = "YOUR_CONTRACT";
+const abi = [...];
+
+async function submitScore(score) {
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  const signer = await provider.getSigner();
+  const contract = new ethers.Contract(contractAddress, abi, signer);
+
+  await contract.submitScore(score);
+}
