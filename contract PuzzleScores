@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract PuzzleScores {
+    mapping(address => uint256) public highScore;
+
+    function submitScore(uint256 score) external {
+        if (score > highScore[msg.sender]) {
+            highScore[msg.sender] = score;
+        }
+    }
+
+    function getScore(address player) external view returns (uint256) {
+        return highScore[player];
+    }
+}
